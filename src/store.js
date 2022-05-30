@@ -5,8 +5,8 @@ import reducer from './Reducer/Reducer';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 // Root Reducer
-const rootReducer = combineReducers({
-  users: reducer,
-});
+// const rootReducer = combineReducers({
+//   users: reducer,
+// });
 // Store
 export const store = createStore(reducer, applyMiddleware(thunk));
