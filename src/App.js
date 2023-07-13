@@ -2,14 +2,16 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import './style.css';
 import { fetchUsers } from './Actions/Actions';
-function App({ users, fetchUsers }) {
+function App({ isLoading, users, fetchUser }) {
   useEffect(() => {
-    fetchUsers();
+    fetchUser();
   }, []);
 
   return (
     <div>
-      {users
+      {isLoading
+        ? '...Loading'
+        : users
         ? users.map((user) => {
             return <div key={user.id}>{user.name}</div>;
           })
@@ -21,12 +23,13 @@ function App({ users, fetchUsers }) {
 const mapStateToProps = (state) => {
   return {
     users: state.users,
+    isLoading: state.isLoading,
   };
 };
 // Redux Map Dispatch to props
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchUsers: () => dispatch(fetchUsers()),
+    fetchUser: () => dispatch(fetchUsers()),
   };
 };
 
