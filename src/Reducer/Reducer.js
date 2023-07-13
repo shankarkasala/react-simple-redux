@@ -11,7 +11,7 @@ const reducer = (state = initialState, action) => {
     case SUCCESS:
       return { isLoading: false, users: action.data, error: '' };
     case FAIL:
-      return { isLoading: false, users: [], error: action.data };
+      return { isLoading: false, users: [], error: action.error };
     default:
       return state;
   }
